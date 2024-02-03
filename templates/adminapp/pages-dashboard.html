@@ -1,348 +1,219 @@
 {% extends 'adminapp/components-layout.html' %}
 {% load static %}
+
 {% block content %}
-
-<main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav class="header-nav ms-auto dis-flax">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'adminapp:dashboard' %}">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
+  
+<section class="section dashboard">
+  
+  <div class="row">
+    <nav class="">
         
-        <!-- Profile -->
-        <ul class="d-flex align-items-center ">
-    
-            <li class="nav-item dropdown pe-3">
-    
-              <a class="profile-circle nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                <img src="{% static 'adminapp/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-              </a><!-- End Profile Iamge Icon -->
-    
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                <li class="dropdown-header">
-                  <h6>Username</h6>
-                  <span>Admin</span>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-    
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>My Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-    
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Sign Out</span>
-                  </a>
-                </li>
-    
-              </ul><!-- End Profile Dropdown Items -->
-            </li><!-- End Profile Nav -->
-    
-          </ul>
-      </nav>
-    </div><!-- End Page Title -->
+      </nav><!-- End Icons Navigation -->
+  </div>
 
-    <section class="section dashboard">
-      
-      <div class="row">
-        <nav class="">
-            
-          </nav><!-- End Icons Navigation -->
-      </div>
-
-    <div class="row">
-        <!-- Invoice Card -->
-        <div class="col-xxl-4 col-md-3">
-          <div class="card info-card sales-card">            
-            <div class="card-body text-center">
-              <h5 class="card-title with-line">Invoice</h5>
-              <hr>
-              <div class="d-flex align-items-center justify-content-center">
-                <div class="ps-3">
-                  <span class="small">This month |</span>
-                </div>  
-                <div class="doller-box invoice-box_color">
-                    <span class="small">$85853.35</span>
-                </div>
-              </div>
+<div class="row">
+    <!-- Invoice Card -->
+    <div class="col-xxl-4 col-md-3">
+      <div class="card info-card sales-card">            
+        <div class="card-body text-center">
+          <h5 class="card-title with-line">Invoice</h5>
+          <hr>
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="ps-3">
+              <span class="small">This month |</span>
+            </div>  
+            <div class="doller-box invoice-box_color">
+                <span class="small">$85853.35</span>
             </div>
-          </div>
-        </div>       
-
-        <!-- Quote Card -->
-        <div class="col-xxl-4 col-md-3">
-          <div class="card info-card sales-card">            
-            <div class="card-body text-center">
-              <h5 class="card-title with-line">Quote</h5>
-              <hr>
-              <div class="d-flex align-items-center justify-content-center">
-                <div class="ps-3">
-                  <span class="small">This month | </span>
-                </div>  
-                <div class="doller-box quota-box_color">
-                    <span class="small">$85853.35</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Quote Card -->
-
-        <!-- Payment Card -->
-        <div class="col-xxl-4 col-md-3">
-          <div class="card info-card sales-card">            
-            <div class="card-body text-center">
-              <h5 class="card-title with-line">Payment</h5>
-              <hr>
-              <div class="d-flex align-items-center justify-content-center">
-                <div class="ps-3">
-                  <span class="small">This month |</span>
-                </div>  
-                <div class="doller-box payment-box_color">
-                    <span class="small">$85853.35</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Payment Card -->
-
-        <!-- Due Balance Card -->
-        <div class="col-xxl-4 col-md-3">
-          <div class="card info-card sales-card">            
-            <div class="card-body text-center">
-              <h5 class="card-title with-line">Due Balance</h5>
-              <hr>
-              <div class="d-flex align-items-center justify-content-center">
-                <div class="ps-3">
-                  <span class="small">Not Paid |</span>
-                </div>  
-                <div class="doller-box balance-box_color">
-                    <span class="small">$85853.35</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Due Balance Card -->
-
-      </div><!-- First Row End -->
-
-      <!-- Second Row -->
-      <div class="row">
-        <div class="col-lg-9">
-          <div class="row"> 
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="card-body">
-                  
-                  <table class="table dashboard-table">
-                    <thead>
-                      <tr class="">
-                        <th scope="col"><span class="table_head-title">Invoices Preview</span></th>
-                        <th scope="col"><span class="table_head-title">Quotes Preview</span></th>
-                        <th scope="col"><span class="table_head-title">Offers Preview</span></th>    
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">
-                            <div>
-                                <div class="prograss-label">
-                                    <label for="file">Draft</label>
-                                    <label for="file">63 %</label>
-                                </div>
-                                <div>
-                                    <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
-                                </div>
-                            </div>
-                        </th>
-                        <th scope="row">
-                            <div>
-                                <div class="prograss-label">
-                                    <label for="file">Accepted</label>
-                                    <label for="file">17 %</label>
-                                </div>
-                                <div>
-                                    <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
-                                </div>
-                            </div>
-                        </th>
-                        <th scope="row">
-                            <div>
-                                <div class="prograss-label">
-                                    <label for="file">Draft</label>
-                                    <label for="file">63 %</label>
-                                </div>
-                                <div>
-                                    <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
-                                </div>
-                            </div>
-                        </th>
-                      </tr>
-                      <tr>
-                        <th scope="row">
-                            <div>
-                                <div class="prograss-label">
-                                    <label for="file">Declined</label>
-                                    <label for="file">0 %</label>
-                                </div>
-                                <div>
-                                    <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
-                                </div>
-                            </div>
-                        </th>
-                        <th scope="row">
-                            <div>
-                                <div class="prograss-label">
-                                    <label for="file">Draft</label>
-                                    <label for="file">63 %</label>
-                                </div>
-                                <div>
-                                    <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
-                                </div>
-                            </div>
-                        </th>
-                        <th scope="row">
-                            <div>
-                                <div class="prograss-label">
-                                    <label for="file">Pending</label>
-                                    <label for="file">7 %</label>
-                                </div>
-                                <div>
-                                    <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
-                                </div>
-                            </div>
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table> 
-
-                </div>
-              </div>
-            </div><!-- End Customers Card -->
-          </div>
-        </div><!-- End Customers Card -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-3">
-
-          <!-- Customer Preview Graph -->
-          <div class="card">
-            
-            <div class="card-body text-center">
-              <h5 class="card-title ">Customer Preview </h5>
-
-              <div id="chart"></div>
-              <div>
-                <span class="small">New Customer This Month</span>
-              </div>
-              <hr>
-              <h1 class="card-title">Active Customer</h1>
-            </div>
-          </div><!-- End Customer Preview Graph  -->
-        </div> <!-- End Right side -->
-      </div>
-    
-      <!-- Third Row -->
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="row"> 
-
-              <!-- Recent Invoices Card -->
-              <div class="col-xxl-4 col-xl-12">
-  
-                <div class="card info-card customers-card">
-  
-                  <div class="card-body">
-                    <h5 class="table-title">Recent Invoices</h5>
-  
-                    
-                    <table class="table">
-                      <thead class="table-light">
-                        <tr>
-                          <th scope="col">Number</th>
-                          <th scope="col">Client</th>
-                          <th scope="col">Total</th>
-                          <th scope="col">Status</th>
-                          <th scope="col"></th>
-      
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td scope="row">878</th>
-                          <td>IDURAR</td>
-                          <td>$ 828,174.00</td>
-                          <td>
-                            <div class="status-box draft-box_color">
-                              <span class="small">Draft</span>
-                            </div>
-                          </td>
-                          <td>...</td>
-
-                        </tr>
-                        <tr>
-                          <td scope="row">878</th>
-                            <td>IDURAR</td>
-                            <td>$ 828,174.00</td>
-                            <td>
-                              <div class="status-box draft-box_color">
-                                <span class="small">Draft</span>
-                              </div>
-                            </td>
-                            <td>...</td>
-                        </tr>
-                        <tr>
-                          <td scope="row">878</th>
-                            <td>IDURAR</td>
-                            <td>$ 828,174.00</td>
-                            <td>
-                              <div class="status-box pending-box_color">
-                                <span class="small">Pending</span>
-                              </div>
-                            </td>
-                            <td>...</td>
-                        </tr>
-                        <tr>
-                          <td scope="row">878</th>
-                            <td>IDURAR</td>
-                            <td>$ 828,174.00</td>
-                            <td>
-                              <div class="status-box sent-box_color">
-                                <span class="small">Draft</span>
-                              </div>
-                            </td>
-                            <td>...</td>
-                        </tr>
-                      </tbody>
-                    </table> 
-  
-                  </div>
-                </div>
-              </div><!-- End Recent Invoices Card -->
           </div>
         </div>
+      </div>
+    </div>       
 
-        <!-- Right side columns -->
-        <div class="col-lg-6">
+    <!-- Quote Card -->
+    <div class="col-xxl-4 col-md-3">
+      <div class="card info-card sales-card">            
+        <div class="card-body text-center">
+          <h5 class="card-title with-line">Quote</h5>
+          <hr>
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="ps-3">
+              <span class="small">This month | </span>
+            </div>  
+            <div class="doller-box quota-box_color">
+                <span class="small">$85853.35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Quote Card -->
 
-          <!-- Recent Quotes Card -->
+    <!-- Payment Card -->
+    <div class="col-xxl-4 col-md-3">
+      <div class="card info-card sales-card">            
+        <div class="card-body text-center">
+          <h5 class="card-title with-line">Payment</h5>
+          <hr>
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="ps-3">
+              <span class="small">This month |</span>
+            </div>  
+            <div class="doller-box payment-box_color">
+                <span class="small">$85853.35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Payment Card -->
+
+    <!-- Due Balance Card -->
+    <div class="col-xxl-4 col-md-3">
+      <div class="card info-card sales-card">            
+        <div class="card-body text-center">
+          <h5 class="card-title with-line">Due Balance</h5>
+          <hr>
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="ps-3">
+              <span class="small">Not Paid |</span>
+            </div>  
+            <div class="doller-box balance-box_color">
+                <span class="small">$85853.35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Due Balance Card -->
+
+  </div><!-- First Row End -->
+
+  <!-- Second Row -->
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="row"> 
+
+        <!-- Customers Card -->
+        <div class="col-xxl-4 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              
+              <table class="table dashboard-table">
+                <thead>
+                  <tr class="">
+                    <th scope="col"><span class="table_head-title">Invoices Preview</span></th>
+                    <th scope="col"><span class="table_head-title">Quotes Preview</span></th>
+                    <th scope="col"><span class="table_head-title">Offers Preview</span></th>    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                        <div>
+                            <div class="prograss-label">
+                                <label for="file">Draft</label>
+                                <label for="file">63 %</label>
+                            </div>
+                            <div>
+                                <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div>
+                            <div class="prograss-label">
+                                <label for="file">Accepted</label>
+                                <label for="file">17 %</label>
+                            </div>
+                            <div>
+                                <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div>
+                            <div class="prograss-label">
+                                <label for="file">Draft</label>
+                                <label for="file">63 %</label>
+                            </div>
+                            <div>
+                                <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
+                            </div>
+                        </div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        <div>
+                            <div class="prograss-label">
+                                <label for="file">Declined</label>
+                                <label for="file">0 %</label>
+                            </div>
+                            <div>
+                                <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div>
+                            <div class="prograss-label">
+                                <label for="file">Draft</label>
+                                <label for="file">63 %</label>
+                            </div>
+                            <div>
+                                <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div>
+                            <div class="prograss-label">
+                                <label for="file">Pending</label>
+                                <label for="file">7 %</label>
+                            </div>
+                            <div>
+                                <progress id="file" class="progress-bar" value="32" max="100"> 32% </progress>
+                            </div>
+                        </div>
+                    </th>
+                  </tr>
+                </tbody>
+              </table> 
+
+            </div>
+          </div>
+        </div><!-- End Customers Card -->
+      </div>
+    </div><!-- End Customers Card -->
+
+    <!-- Right side columns -->
+    <div class="col-lg-3">
+
+      <!-- Customer Preview Graph -->
+      <div class="card">
+        
+        <div class="card-body text-center">
+          <h5 class="card-title ">Customer Preview </h5>
+
+          <div id="chart"></div>
+          <div>
+            <span class="small">New Customer This Month</span>
+          </div>
+          <hr>
+          <h1 class="card-title">Active Customer</h1>
+        </div>
+      </div><!-- End Customer Preview Graph  -->
+    </div> <!-- End Right side -->
+  </div>
+
+  <!-- Third Row -->
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="row"> 
+
+          <!-- Recent Invoices Card -->
           <div class="col-xxl-4 col-xl-12">
-  
+
             <div class="card info-card customers-card">
 
               <div class="card-body">
@@ -366,8 +237,8 @@
                       <td>IDURAR</td>
                       <td>$ 828,174.00</td>
                       <td>
-                        <div class="status-box pending-box_color">
-                          <span class="small">Pending</span>
+                        <div class="status-box draft-box_color">
+                          <span class="small">Draft</span>
                         </div>
                       </td>
                       <td>...</td>
@@ -389,8 +260,8 @@
                         <td>IDURAR</td>
                         <td>$ 828,174.00</td>
                         <td>
-                          <div class="status-box draft-box_color">
-                            <span class="small">Draft</span>
+                          <div class="status-box pending-box_color">
+                            <span class="small">Pending</span>
                           </div>
                         </td>
                         <td>...</td>
@@ -407,15 +278,91 @@
                         <td>...</td>
                     </tr>
                   </tbody>
-                </table>   
+                </table> 
 
               </div>
             </div>
-          </div><!-- End Recent Quotes card -->
+          </div><!-- End Recent Invoices Card -->
+      </div>
+    </div>
 
-      </div><!-- End Third Row -->
-    </section>
+    <!-- Right side columns -->
+    <div class="col-lg-6">
 
-  </main><!-- End #main -->
+      <!-- Recent Quotes Card -->
+      <div class="col-xxl-4 col-xl-12">
 
-  {% endblock %}
+        <div class="card info-card customers-card">
+
+          <div class="card-body">
+            <h5 class="table-title">Recent Invoices</h5>
+
+            
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Number</th>
+                  <th scope="col">Client</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Status</th>
+                  <th scope="col"></th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">878</th>
+                  <td>IDURAR</td>
+                  <td>$ 828,174.00</td>
+                  <td>
+                    <div class="status-box pending-box_color">
+                      <span class="small">Pending</span>
+                    </div>
+                  </td>
+                  <td>...</td>
+
+                </tr>
+                <tr>
+                  <td scope="row">878</th>
+                    <td>IDURAR</td>
+                    <td>$ 828,174.00</td>
+                    <td>
+                      <div class="status-box draft-box_color">
+                        <span class="small">Draft</span>
+                      </div>
+                    </td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                  <td scope="row">878</th>
+                    <td>IDURAR</td>
+                    <td>$ 828,174.00</td>
+                    <td>
+                      <div class="status-box draft-box_color">
+                        <span class="small">Draft</span>
+                      </div>
+                    </td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                  <td scope="row">878</th>
+                    <td>IDURAR</td>
+                    <td>$ 828,174.00</td>
+                    <td>
+                      <div class="status-box sent-box_color">
+                        <span class="small">Draft</span>
+                      </div>
+                    </td>
+                    <td>...</td>
+                </tr>
+              </tbody>
+            </table>   
+
+          </div>
+        </div>
+      </div><!-- End Recent Quotes card -->
+
+  </div><!-- End Third Row -->
+</section>
+
+{% endblock %}

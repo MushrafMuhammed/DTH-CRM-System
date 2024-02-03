@@ -49,20 +49,20 @@
         </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{% url 'adminapp:dashboard' %}">
+        <a class="nav-link " href="{% url 'telecallerapp:dashboard' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
-      {% comment %} <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'adminapp:customers' %}">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'telecallerapp:customers' %}">
           <i class="bi bi-headphones"></i>
           <span>Customer</span>
         </a>
-      </li><!-- End Customer Nav --> {% endcomment %}
+      </li><!-- End Customer Nav -->
 
-      <li class="nav-item">
+      {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'adminapp:people' %}">
           <i class="bi bi-person"></i>
           <span>People</span>
@@ -83,7 +83,7 @@
         </a>
       </li><!-- End Lead Nav -->
 
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'adminapp:offers' %}">
           <i class="bi bi-file-earmark"></i>
           <span>Offer</span>
@@ -140,16 +140,14 @@
       </li> -->
       <!-- End Settings Page Nav -->
 
-    </ul>
+  </ul>
 
   </aside><!-- End Sidebar-->
+
+  {% block content %}
   <main id="main" class="main">
-    {% block profile %}
     <div class="pagetitle">
-      <nav class="header-nav ms-auto dis-flax">
-        <ol class="breadcrumb">
-          
-        </ol>
+      <nav class="header-nav ms-auto display-flax">
         
         <!-- Profile -->
         <ul class="d-flex align-items-center ">
@@ -162,7 +160,7 @@
     
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header">
-                  <h6>{{profile}}</h6>
+                  <h6>Username</h6>
                   <span>Admin</span>
                 </li>
                 <li>
@@ -192,20 +190,46 @@
           </ul>
       </nav>
     </div><!-- End Page Title -->
-    {% endblock %}
 
-    {% block content %}
+    <section class="section dashboard">
+    
+      <!-- Third Row -->
+      <div class="row">
+        <div class="col-lg-12"> 
 
-    {% endblock %}
-  </main>
+              <!-- Client List Card -->
+              <div class="col-xxl-4 col-xl-12">
   
+                <div class="card info-card customers-card">
+  
+                  <h2>Upload Leads</h2>
+                  <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Upload</button>
+                  </form>
+                </div>
+              </div><!-- End Recent Invoices Card -->
+          </div>
+        </div>
+      </div><!-- End Third Row -->
+    </section>
 
- 
+  </main><!-- End #main -->
+  {% endblock %}
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright 
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

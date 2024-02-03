@@ -1,0 +1,239 @@
+{% extends 'telecallerapp/components-layout.html' %}
+{% load static %}
+{% block content %}
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+        <nav class="header-nav ms-auto display-flax">
+          
+          <!-- Profile -->
+          <ul class="d-flex align-items-center ">
+      
+              <li class="nav-item dropdown pe-3">
+      
+                <a class="profile-circle nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                  <img src="{% static 'adminapp/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+                </a><!-- End Profile Iamge Icon -->
+      
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                  <li class="dropdown-header">
+                    <h6>{{profile}}</h6>
+                    <span>Telecaller</span>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+      
+                  <li>
+                    <a class="dropdown-item d-flex align-items-center" href="{% url 'telecallerapp:logout'%}">
+                      <i class="bi bi-box-arrow-right"></i>
+                      <span>Sign Out</span>
+                    </a>
+                  </li>
+      
+                </ul><!-- End Profile Dropdown Items -->
+              </li><!-- End Profile Nav -->
+      
+            </ul>
+        </nav>
+      </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+    
+      <!-- Third Row -->
+      <div class="row">
+        <div class="col-lg-12"> 
+
+              <!-- Recent Invoices Card -->
+              <div class="col-xxl-4 col-xl-12">
+  
+                <div class="card info-card customers-card">
+  
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 table-title">
+                            <h5><i class="bi bi-arrow-left"></i> Lead List</h5>
+                        </div>
+                        <div class="col-lg-6 table-title btn-col">
+                            <button class="btn-refresh" onclick="refresh()"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+                            <!-- <button class="btn-blue" data-toggle="modal" data-target="#exampleModalCenter">Add New Lead</button> -->
+                        </div>
+                    </div>
+  
+                    
+                    <table class="table">
+                      <thead class="table-light">
+                        <tr>								
+                          <th scope="col">Type</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Source</th>
+                          <th scope="col">Country</th>
+                          <th scope="col">Phone</th>     
+                          <th scope="col">Email</th> 
+                          <th scope="col">Status</th>
+                          <th scope="col"></th> 
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for lead in leads  %}
+                          <tr>			
+                            <td scope="row" hidden>{{lead.id}}</td>
+                            <td scope="row">{{lead.type}}</td>
+                            <td>{{lead.name}}</td>
+                            <td>{{lead.source}}</td>
+                            <td>{{lead.country}}</td>
+                            <td>{{lead.phone}}</td>
+                            <td>{{lead.email}}</td>
+                            <td>{{lead.lead_status}}</td>
+                            <td><button class="edit_btn btn-blue" data-toggle="modal" data-target="#exampleModalCenter">Update</button></td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table> 
+  
+                  </div>
+                </div>
+              </div><!-- End Recent Invoices Card -->
+          </div>
+        </div>
+      </div><!-- End Third Row -->
+    </section>
+
+  
+  </main><!-- End #main -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <form id="submitLead">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Update Lead Status</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="inputId">
+            <div class="form-group row mb-2">
+              <label for="inputType" class="col-sm-2 col-form-label">Type</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputType" readonly>
+              </div>
+            </div>
+            <div class="form-group row mb-2">
+              <label for="inputname" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" readonly>
+              </div>
+            </div>
+            <div class="form-group row mb-2">
+              <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+              <div class="col-sm-10">
+                <input type="tel" class="form-control" id="inputPhone" readonly>
+              </div>
+            </div>
+            <div class="form-group row mb-2">
+              <label for="inputStatus" class="col-sm-2 col-form-label">Lead Status</label>
+              <div class="col-sm-10">
+                <select id="inputLead_status" class="form-control custom-select" required>
+                  <option value="pending">pending</option>
+                  <option value="converted">Converted</option>
+                  <option value="interested">Interested</option>
+                  <option value="not interested">Not Interested</option>
+                </select  
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" type="submit">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Jquery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+    // Individual Lead Submission
+  $(document).ready(function () {
+    $('#submitLead').submit(function (event) {
+      event.preventDefault();
+
+      var id = $('#inputId').val();
+      var lead_status = $('#inputLead_status').val();
+
+      // send AJAX request to server
+      $.ajax({
+        url: '/telecallerapp/update_lead/',
+        type: 'POST',
+        data: {
+          id: id,
+          lead_status: lead_status,
+          csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+
+        success: function (response) {
+          alert(response.message)
+          window.location.reload();
+        },
+        error: function (error) {
+          alert(error.message)
+
+        }
+      });
+    });
+  });
+
+  // Indivitual lead Edit
+  $(document).ready(function () {
+    $('.edit_btn').click(function () {
+      var row = $(this).closest('tr');
+
+      var id = row.find('td:eq(0)').text();
+      var type = row.find('td:eq(1)').text();
+      var name = row.find('td:eq(2)').text();
+      var phone = row.find('td:eq(5)').text();
+      var lead_status = row.find('td:eq(7)').text();
+
+      // Populate the modal with data
+      $('#exampleModalCenter #inputId').val(id);
+      $('#exampleModalCenter #inputType').val(type);
+      $('#exampleModalCenter #inputName').val(name);
+      $('#exampleModalCenter #inputPhone').val(phone);
+      $('#exampleModalCenter #inputLead_status').val(lead_status);
+      console.log($('#inputLead_status').val())
+
+    });
+  });
+  
+
+    // This will refresh the page
+    function refresh() {
+      window.location.reload();  
+    }
+  
+    {% if success_message %}
+      alert("{{ success_message }}");
+    {% endif %}
+
+    {% if error_message %}
+      alert("{{ error_message }}");
+    {% endif %}
+  </script>
+  
+  
+
+  {% endblock %}

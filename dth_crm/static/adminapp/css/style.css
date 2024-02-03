@@ -463,19 +463,6 @@ input:checked + .slider:before {
   border: 1px solid #0516ff;
 }
 
-.btn-blue{
-  padding: 0.10rem 0.30rem;
-  font-size: 15px;
-  text-align: center;
-  border-radius: 6px;
-  background: #030fbb;
-  color: #ffffff;
-  border: 0;
-  font-family: "Poppins", sans-serif;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
 .company-box_color{
   background: #e6f4ff;
   color: #066ccc;
@@ -1499,4 +1486,61 @@ input:checked + .slider:before {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+
+
+/* test setup */
+
+.input_excel {
+  width: 98px;
+  margin-right: 5px;
+}
+
+
+.btn-blue{
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 6px;
+  margin-right: 5px;
+  background: #0d6efd;
+  color: #ffffff;
+  border: 0;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-green{
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 6px;
+  margin-right: 5px;
+  background: #00a100;
+  color: #ffffff;
+  border: 0;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bt {
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 6px;
+  margin-right: 5px;
+  background: #dc3545;
+  text-decoration: none;
+  color: #ffffff;
+  border: 0;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bt:hover {
+  color: #ffffff; /* Set the hover color to match the normal state */
+  background: #c93c4a; /* Change the background color on hover if desired */
 }
