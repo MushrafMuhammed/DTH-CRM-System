@@ -23,6 +23,7 @@ def loginfun(request):
                  username = username,
                  password = password
             )
+            print(admin.id)
             request.session["admin_sessionID"] = admin.id
             return redirect('adminapp:dashboard')
         except :
@@ -49,21 +50,11 @@ def dashboardfun(request):
     else:
         return redirect('adminapp:login')
 
-def customerfun(request):
-    return render(request, 'adminapp/pages-customer.html')
-
-def peoplefun(request):
-    return render(request, 'adminapp/pages-people.html')
-
-def companyfun(request):
-    return render(request, 'adminapp/pages-company.html')
-
 def leadfun(request):
     if 'admin_sessionID' in request.session:
-        leads = Lead.objects.all()
+        leads_list = Lead.objects.all()
 
         if request.method == 'POST':
-            print("***************tested")
             excel_file = request.FILES['excel_file']
             wb = load_workbook(excel_file)
             ws = wb.active
@@ -76,15 +67,25 @@ def leadfun(request):
                 # Check if the phone numbers already exists
                 if phone in existing_phones:
                     error_message = 'Phone number already exists in the Lead table.'
-                    return render(request, 'adminapp/pages-lead.html', {'error_message': error_message, 'leads': leads })
+                    return render(request, 'adminapp/pages-lead.html', {'error_message': error_message, 'leads': leads_list })
                 
                 # If not, create a new Lead
-                Lead.objects.create(type=type, lead_status=lead_status, source=source, country=country, name=name, phone=phone, email=email, status=status)
-            return render(request, 'adminapp/pages-lead.html', {'success_message': 'Leads imported successfully.', 'leads': leads })
+                Lead.objects.create(
+                    type=type, 
+                    lead_status=lead_status, 
+                    source=source, 
+                    country=country, 
+                    name=name, 
+                    phone=phone, 
+                    email=email, 
+                    status=status
+                )
+            return render(request, 'adminapp/pages-lead.html', {'success_message': 'Leads imported successfully.', 'leads': leads_list })
         
-        return render(request, 'adminapp/pages-lead.html', {'leads': leads})
+        return render(request, 'adminapp/pages-lead.html', {'leads': leads_list})
     else:
         return redirect('adminapp:login')
+    
 def add_leadfun(request):
     try:
         if request.method == 'POST' and request.POST.get('id') == '':
@@ -96,7 +97,7 @@ def add_leadfun(request):
             country = request.POST.get('country')
             phone = request.POST.get('phone')
             email = request.POST.get('email')
-            print(id)
+            print(id,type,name,lead_status, source, country, phone,email)
 
             Lead.objects.create(
                 type=type,
@@ -167,38 +168,42 @@ def lead_assignfun(request):
 
     return render(request, 'adminapp/lead_assign.html', {'form': form, 'assigned_leads': assigned_leads, 'telecallers': telecallers})
 
+def companyfun(request):
+    return render(request, 'adminapp/pages-company.html')
 
-def offerfun(request):
-    return render(request, 'adminapp/pages-offer.html')
 
-
-def invoicefun(request):
-    return render(request, 'adminapp/pages-invoice.html')
-
-def quotefun(request):
-    return render(request, 'adminapp/pages-quote.html')
-
-def paymentfun(request):
-    return render(request, 'adminapp/pages-payment.html')
-
-def expensesfun(request):
-    return render(request, 'adminapp/pages-expense.html')
-
-def productfun(request):
-    return render(request, 'adminapp/pages-product.html')
-
-def category_productfun(request):
-    return render(request, 'adminapp/pages-product_category.html')
-
+def peoplefun(request):
+    return render(request, 'adminapp/pages-people.html')
 
 def logoutfun(request):
     if 'admin_sessionID' in request.session:
         request.session.flush()
     return redirect('adminapp:login')
 
+# def customerfun(request):
+#     return render(request, 'adminapp/pages-customer.html')
 
-def testfun(request):
-    return render(request, 'adminapp/check-layout.html')
+# def offerfun(request):
+#     return render(request, 'adminapp/pages-offer.html')
+
+# def invoicefun(request):
+#     return render(request, 'adminapp/pages-invoice.html')
+
+# def quotefun(request):
+#     return render(request, 'adminapp/pages-quote.html')
+
+# def paymentfun(request):
+#     return render(request, 'adminapp/pages-payment.html')
+
+# def expensesfun(request):
+#     return render(request, 'adminapp/pages-expense.html')
+
+# def productfun(request):
+#     return render(request, 'adminapp/pages-product.html')
+
+# def category_productfun(request):
+#     return render(request, 'adminapp/pages-product_category.html')
+
 
 
 

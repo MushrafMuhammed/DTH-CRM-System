@@ -1,4 +1,5 @@
 from django.db import models
+
 # Create your models here.
 
 # class Group(models.Model):
@@ -31,11 +32,10 @@ class Telecaller(models.Model):
     country = models.CharField(max_length=50)
     phone = models.CharField(max_length=15)
     email = models.EmailField()
+    password = models.CharField(max_length=100, default='')
 
     def __str__(self):
         return self.name
-
-from django.db import models
 
 class Lead(models.Model):
     telecaller = models.ForeignKey(Telecaller, null=True, blank=True, on_delete=models.SET_NULL)
@@ -47,7 +47,6 @@ class Lead(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField()
     status = models.CharField(max_length=100, default='pending')
-    
 
     def __str__(self):
         return f"{self.type} - {self.name}"

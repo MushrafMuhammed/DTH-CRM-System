@@ -1544,3 +1544,8 @@ input:checked + .slider:before {
   color: #ffffff; /* Set the hover color to match the normal state */
   background: #c93c4a; /* Change the background color on hover if desired */
 }
+
+table{
+  width: 100%;
+  table-layout: fixed;
+}
